@@ -1,0 +1,50 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+
+// Headers
+string toString (double);
+int toInt (string);
+double toDouble (string);
+
+int main() {
+    int sayi, bolen, asalkontrol;
+    
+    cout << "asal olup olmadığını öğrenmek istediğiniz sayıyı giriniz" << endl;
+    cin >> sayi;
+    asalkontrol = 0;
+    bolen = 2;
+    while (sayi > 1) {
+        if (sayi % bolen == 0) {
+            sayi = (int) ((double) sayi / bolen);
+            asalkontrol = asalkontrol + 1;
+        } else {
+            bolen = bolen + 1;
+        }
+    }
+    if (asalkontrol == 1) {
+        cout << "girdiğiniz sayı asaldır" << endl;
+    } else {
+        cout << "girdiğiniz sayı asal değildir" << endl;
+    }
+    return 0;
+}
+
+// The following implements type conversion functions.
+string toString (double value) { //int also
+    stringstream temp;
+    temp << value;
+    return temp.str();
+}
+
+int toInt (string text) {
+    return atoi(text.c_str());
+}
+
+double toDouble (string text) {
+    return atof(text.c_str());
+}
