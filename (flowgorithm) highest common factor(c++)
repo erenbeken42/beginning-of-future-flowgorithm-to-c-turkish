@@ -1,0 +1,57 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+
+// Headers
+string toString (double);
+int toInt (string);
+double toDouble (string);
+
+int main() {
+    int sayi1, sayi2, bolen, ebob;
+    bolen = 2;
+    ebob = 1;
+    cout << "1.sayıyı giriniz" << endl;
+    cin >> sayi1;
+    cout << "2.sayıyı giriniz" << endl;
+    cin >> sayi2;
+    while (sayi1 != 1 && sayi2 != 1) {
+        if (sayi1 % bolen == 0 || sayi2 % bolen == 0) {
+            if (sayi1 % bolen == 0 && sayi2 % bolen == 0) {
+                sayi1 = (int) ((double) sayi1 / bolen);
+                sayi2 = (int) ((double) sayi2 / bolen);
+                ebob = bolen * ebob;
+            } else {
+                if (sayi1 % bolen == 0) {
+                    sayi1 = (int) ((double) sayi1 / bolen);
+                }
+                if (sayi2 % bolen == 0) {
+                    sayi2 = (int) ((double) sayi2 / bolen);
+                }
+            }
+        } else {
+            bolen = bolen + 1;
+        }
+    }
+    cout << ebob << endl;
+    return 0;
+}
+
+// The following implements type conversion functions.
+string toString (double value) { //int also
+    stringstream temp;
+    temp << value;
+    return temp.str();
+}
+
+int toInt (string text) {
+    return atoi(text.c_str());
+}
+
+double toDouble (string text) {
+    return atof(text.c_str());
+}
